@@ -104,7 +104,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         toast.error("Erro na alteração de quantidade do produto");
         return;
       }
-      const { data: InStock } = await api.get(`stock/${productId}`);
+      const { data: InStock } = await api.get<Stock>(`stock/${productId}`);
       const productAmount = InStock.amount;
       const productIsAvailable = productAmount >= amount;
       if (!productIsAvailable) {
